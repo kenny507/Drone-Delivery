@@ -1,0 +1,371 @@
+[gd_scene format=3 uid="uid://gy3bifr3dkvd"]
+
+[ext_resource type="Script" uid="uid://b8m0k580xiy0s" path="res://player.gd" id="1_glv2v"]
+[ext_resource type="Texture2D" uid="uid://bnxeg7jtcrar4" path="res://pngtree-cute-white-clouds-png-image_14093167.png" id="1_wkp8b"]
+[ext_resource type="Texture2D" uid="uid://crodqrncjyxvi" path="res://Drone_Flying-removebg-preview.png" id="2_cm0pq"]
+[ext_resource type="Texture2D" uid="uid://beaeilnpoidw" path="res://Drone_Idle_-removebg-preview.png" id="3_fos0i"]
+[ext_resource type="Script" uid="uid://dajpcvwjj8bgp" path="res://battery_pickup.gd" id="3_r0du0"]
+[ext_resource type="Script" uid="uid://g4jfq0chbyty" path="res://package.gd" id="5_fos0i"]
+[ext_resource type="Texture2D" uid="uid://by6m5iqwnxm1r" path="res://images-removebg-preview.png" id="6_3dxm6"]
+[ext_resource type="Texture2D" uid="uid://c76uc208bckgq" path="res://house1-0-md-removebg-preview.png" id="7_lgr22"]
+[ext_resource type="Script" uid="uid://cscxggg7433jk" path="res://delivery_zone.gd" id="7_trn2v"]
+[ext_resource type="AudioStream" uid="uid://x5tg4uil3sr6" path="res://Darren Curtis - Dreaming Under The Stars.mp3" id="9_03owx"]
+[ext_resource type="Texture2D" uid="uid://hld5byjunj3v" path="res://Screenshot_2026-04-16_030959-removebg-preview.png" id="11_20pc6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0du0"]
+size = Vector2(94.5, 473)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uu6xs"]
+radius = 30.066593
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3dxm6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cm0pq")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fos0i")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cm0pq"]
+radius = 8.062258
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dxm6"]
+size = Vector2(39, 38.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_trn2v"]
+radius = 54.147945
+
+[node name="Main" type="Node2D" unique_id=1544608066]
+position = Vector2(237, 222)
+
+[node name="Background(Sky)" type="ColorRect" parent="." unique_id=1350094105]
+offset_left = -267.0
+offset_top = -246.0
+offset_right = 1003.0
+offset_bottom = 482.0
+color = Color(0.3882353, 0.7882353, 1, 1)
+
+[node name="Building3" type="ColorRect" parent="." unique_id=1679198591]
+offset_left = -268.0
+offset_top = 322.0
+offset_right = 995.0
+offset_bottom = 635.0
+color = Color(0.15686275, 0.6, 0, 1)
+
+[node name="Building1" type="ColorRect" parent="." unique_id=1846026997]
+offset_left = 192.0
+offset_top = -246.0
+offset_right = 288.0
+offset_bottom = 233.0
+color = Color(0.3390949, 0.3390949, 0.3390949, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Building1" unique_id=968278550]
+position = Vector2(113, 18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Building1/StaticBody2D" unique_id=1455892329]
+position = Vector2(-61, 227)
+shape = SubResource("RectangleShape2D_r0du0")
+
+[node name="Building2" type="ColorRect" parent="." unique_id=1543205152]
+offset_left = -31.0
+offset_top = -105.0
+offset_right = 65.0
+offset_bottom = 374.0
+color = Color(0.3390949, 0.3390949, 0.3390949, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Building2" unique_id=744217465]
+position = Vector2(51, 85)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Building2/StaticBody2D" unique_id=1617586827]
+position = Vector2(-0.5, 152.5)
+shape = SubResource("RectangleShape2D_r0du0")
+
+[node name="Building4" type="ColorRect" parent="." unique_id=21018710]
+offset_left = 381.0
+offset_top = 27.0
+offset_right = 477.0
+offset_bottom = 506.0
+color = Color(0.3390949, 0.3390949, 0.3390949, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Building4" unique_id=1664415400]
+position = Vector2(51, 85)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Building4/StaticBody2D" unique_id=2065659406]
+position = Vector2(-2.75, 149)
+shape = SubResource("RectangleShape2D_r0du0")
+
+[node name="Cloud" type="Sprite2D" parent="." unique_id=1254172496]
+position = Vector2(832, -56.00001)
+scale = Vector2(0.73055553, 0.6472222)
+texture = ExtResource("1_wkp8b")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=179245151]
+position = Vector2(-121, 93)
+script = ExtResource("1_glv2v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1832692586]
+position = Vector2(-2, -1)
+shape = SubResource("CircleShape2D_uu6xs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=1246085680]
+position = Vector2(-2, -2)
+scale = Vector2(0.1061905, 0.15962099)
+sprite_frames = SubResource("SpriteFrames_3dxm6")
+animation = &"idle"
+
+[node name="BatteryPickup" type="Area2D" parent="." unique_id=820065870]
+position = Vector2(646, 197)
+script = ExtResource("3_r0du0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BatteryPickup" unique_id=196041360]
+position = Vector2(3, -1)
+shape = SubResource("CircleShape2D_cm0pq")
+
+[node name="Sprite2D" type="Sprite2D" parent="BatteryPickup" unique_id=1602395857]
+
+[node name="ColorRect" type="ColorRect" parent="BatteryPickup" unique_id=215030476]
+offset_left = -2.0
+offset_top = -5.0
+offset_right = 8.0
+offset_bottom = 5.0
+color = Color(0.11620709, 0.99120075, 0.201762, 1)
+
+[node name="ColorRect" type="ColorRect" parent="BatteryPickup/ColorRect" unique_id=707782749]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.45000002
+offset_left = 1.0
+offset_top = -6.0
+offset_right = 5.5
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1685935951]
+
+[node name="BatteryBar" type="ProgressBar" parent="UI" unique_id=1005720452]
+offset_left = 48.0
+offset_top = 32.0
+offset_right = 299.0
+offset_bottom = 60.0
+
+[node name="StatusLabel" type="Label" parent="UI" unique_id=1091769704]
+offset_left = 15.0
+offset_top = 76.0
+offset_right = 192.0
+offset_bottom = 114.0
+text = "Find the Package"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1922802948]
+
+[node name="BatteryPickup2" type="Area2D" parent="." unique_id=1282298266]
+position = Vector2(413, -111)
+script = ExtResource("3_r0du0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BatteryPickup2" unique_id=1486266097]
+position = Vector2(-46, 388)
+shape = SubResource("CircleShape2D_cm0pq")
+
+[node name="Sprite2D" type="Sprite2D" parent="BatteryPickup2" unique_id=580635299]
+
+[node name="ColorRect" type="ColorRect" parent="BatteryPickup2" unique_id=1831996165]
+offset_left = -51.0
+offset_top = 386.0
+offset_right = -41.0
+offset_bottom = 396.0
+color = Color(0.11620709, 0.99120075, 0.201762, 1)
+
+[node name="ColorRect" type="ColorRect" parent="BatteryPickup2/ColorRect" unique_id=1930017711]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.45000002
+offset_left = 1.0
+offset_top = -6.0
+offset_right = 5.5
+
+[node name="Package" type="Area2D" parent="." unique_id=734391909]
+position = Vector2(894, 366)
+script = ExtResource("5_fos0i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Package" unique_id=231006917]
+position = Vector2(-6, 15.75)
+shape = SubResource("RectangleShape2D_3dxm6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Package" unique_id=143846738]
+position = Vector2(-3.999998, 16.00001)
+scale = Vector2(0.17796619, 0.19131452)
+texture = ExtResource("6_3dxm6")
+
+[node name="DeliveryZone" type="Area2D" parent="." unique_id=1629854749]
+position = Vector2(-170, 343)
+script = ExtResource("7_trn2v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeliveryZone" unique_id=1605275792]
+position = Vector2(6, 18)
+shape = SubResource("CircleShape2D_trn2v")
+
+[node name="Sprite2D" type="Sprite2D" parent="DeliveryZone" unique_id=485309687]
+position = Vector2(5, 8.000015)
+scale = Vector2(0.18079096, 0.17659569)
+texture = ExtResource("7_lgr22")
+
+[node name="BatteryPickup3" type="Area2D" parent="." unique_id=1601923881]
+position = Vector2(413, -111)
+script = ExtResource("3_r0du0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BatteryPickup3" unique_id=1896983230]
+position = Vector2(1, -2)
+shape = SubResource("CircleShape2D_cm0pq")
+
+[node name="Sprite2D" type="Sprite2D" parent="BatteryPickup3" unique_id=348062812]
+
+[node name="ColorRect" type="ColorRect" parent="BatteryPickup3" unique_id=200351235]
+offset_left = -2.0
+offset_top = -4.0
+offset_right = 8.0
+offset_bottom = 6.0
+color = Color(0.11620709, 0.99120075, 0.201762, 1)
+
+[node name="ColorRect" type="ColorRect" parent="BatteryPickup3/ColorRect" unique_id=423681394]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.45000002
+offset_left = 1.0
+offset_top = -6.0
+offset_right = 5.5
+
+[node name="BatteryPickup4" type="Area2D" parent="." unique_id=1950535879]
+position = Vector2(416, -110)
+script = ExtResource("3_r0du0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BatteryPickup4" unique_id=1028791687]
+position = Vector2(-333, 44)
+shape = SubResource("CircleShape2D_cm0pq")
+
+[node name="Sprite2D" type="Sprite2D" parent="BatteryPickup4" unique_id=1061412900]
+
+[node name="ColorRect" type="ColorRect" parent="BatteryPickup4" unique_id=1779660551]
+offset_left = -338.0
+offset_top = 43.0
+offset_right = -328.0
+offset_bottom = 53.0
+color = Color(0.11620709, 0.99120075, 0.201762, 1)
+
+[node name="ColorRect" type="ColorRect" parent="BatteryPickup4/ColorRect" unique_id=572984419]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.45000002
+offset_left = 1.0
+offset_top = -6.0
+offset_right = 5.5
+
+[node name="BatteryPickup5" type="Area2D" parent="." unique_id=1124083617]
+position = Vector2(156, -124)
+script = ExtResource("3_r0du0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BatteryPickup5" unique_id=1846616340]
+position = Vector2(-259, 16)
+shape = SubResource("CircleShape2D_cm0pq")
+
+[node name="Sprite2D" type="Sprite2D" parent="BatteryPickup5" unique_id=40977118]
+
+[node name="ColorRect" type="ColorRect" parent="BatteryPickup5" unique_id=1396326060]
+offset_left = -267.0
+offset_top = 13.0
+offset_right = -257.0
+offset_bottom = 23.0
+color = Color(0.11620709, 0.99120075, 0.201762, 1)
+
+[node name="ColorRect" type="ColorRect" parent="BatteryPickup5/ColorRect" unique_id=378152888]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.45000002
+offset_left = 1.0
+offset_top = -6.0
+offset_right = 5.5
+
+[node name="BatteryPickup6" type="Area2D" parent="." unique_id=2132534770]
+position = Vector2(1024, -133)
+script = ExtResource("3_r0du0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BatteryPickup6" unique_id=584198232]
+position = Vector2(-259, 16)
+shape = SubResource("CircleShape2D_cm0pq")
+
+[node name="Sprite2D" type="Sprite2D" parent="BatteryPickup6" unique_id=1676187153]
+
+[node name="ColorRect" type="ColorRect" parent="BatteryPickup6" unique_id=175775819]
+offset_left = -267.0
+offset_top = 13.0
+offset_right = -257.0
+offset_bottom = 23.0
+color = Color(0.11620709, 0.99120075, 0.201762, 1)
+
+[node name="ColorRect" type="ColorRect" parent="BatteryPickup6/ColorRect" unique_id=1599624429]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.45000002
+offset_left = 1.0
+offset_top = -6.0
+offset_right = 5.5
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1129623669]
+stream = ExtResource("9_03owx")
+autoplay = true
+
+[node name="Cloud2" type="Sprite2D" parent="." unique_id=2128979443]
+position = Vector2(602, -143)
+scale = Vector2(0.73055553, 0.6472222)
+texture = ExtResource("1_wkp8b")
+
+[node name="Cloud3" type="Sprite2D" parent="Cloud2" unique_id=1589606486]
+position = Vector2(-68.44108, 168.41203)
+scale = Vector2(0.57060134, 0.525328)
+texture = ExtResource("1_wkp8b")
+
+[node name="Flowers" type="Sprite2D" parent="." unique_id=1363854702]
+position = Vector2(-58, 402)
+scale = Vector2(0.11745698, 0.16522981)
+texture = ExtResource("11_20pc6")
+
+[node name="Flowers" type="Sprite2D" parent="Flowers" unique_id=1961110795]
+position = Vector2(2783.9983, 24.208801)
+scale = Vector2(0.8019517, 0.7303487)
+texture = ExtResource("11_20pc6")
+
+[node name="Flowers" type="Sprite2D" parent="Flowers/Flowers" unique_id=727924635]
+position = Vector2(-1666.7585, -422.62125)
+scale = Vector2(1.357848, 1.1068488)
+texture = ExtResource("11_20pc6")
+
+[node name="Flowers" type="Sprite2D" parent="Flowers/Flowers/Flowers" unique_id=1610633294]
+position = Vector2(3166.4802, 344.39035)
+scale = Vector2(1.357848, 1.1068488)
+texture = ExtResource("11_20pc6")
+
+[node name="Flowers" type="Sprite2D" parent="Flowers/Flowers/Flowers/Flowers" unique_id=1985128759]
+position = Vector2(537.3495, -276.12488)
+scale = Vector2(1.0760267, 0.8903299)
+texture = ExtResource("11_20pc6")
+
+[node name="Flowers" type="Sprite2D" parent="Flowers/Flowers/Flowers/Flowers/Flowers" unique_id=1605477415]
+position = Vector2(708.16736, 281.1086)
+scale = Vector2(0.86170524, 1.1068488)
+texture = ExtResource("11_20pc6")
+
+[connection signal="body_entered" from="BatteryPickup" to="BatteryPickup" method="_on_body_entered"]
+[connection signal="body_entered" from="BatteryPickup2" to="BatteryPickup2" method="_on_body_entered"]
+[connection signal="body_entered" from="Package" to="Package" method="_on_body_entered"]
+[connection signal="body_entered" from="DeliveryZone" to="DeliveryZone" method="_on_body_entered"]
+[connection signal="body_entered" from="BatteryPickup3" to="BatteryPickup3" method="_on_body_entered"]
+[connection signal="body_entered" from="BatteryPickup4" to="BatteryPickup4" method="_on_body_entered"]
+[connection signal="body_entered" from="BatteryPickup5" to="BatteryPickup5" method="_on_body_entered"]
+[connection signal="body_entered" from="BatteryPickup6" to="BatteryPickup6" method="_on_body_entered"]
